@@ -38,7 +38,8 @@ async function ensureListener() {
   if (h.client) return;
   if (h.connecting) return h.connecting;
   h.connecting = (async () => {
-    const client = new Client({ connectionString: process.env.DATABASE_URL });
+    // LISTEN needs a session, so bypass transaction-mode poolers (e.g. Neon's) when a direct URL is set.
+    const client = new Client({ connectionString: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL });
     client.on("notification", (msg) => {
       if (!msg.payload) return;
       try {
