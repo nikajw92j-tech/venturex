@@ -1,0 +1,7 @@
+node_modules
+.next
+.devdb
+storage
+.env
+e2e-shots
+.git

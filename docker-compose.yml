@@ -1,0 +1,40 @@
+# Self-hosted stack: PostgreSQL + VENTUREX + background scheduler.
+#   cp .env.example .env   (fill in secrets; set APP_URL to your public URL)
+#   docker compose up -d --build
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: venturex
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: venturex
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U venturex"]
+      interval: 5s
+      retries: 10
+
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://venturex:${POSTGRES_PASSWORD:-change-me}@db:5432/venturex
+      NODE_ENV: production
+    ports: ["3000:3000"]
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+
+  worker:
+    image: node:22-alpine
+    working_dir: /app
+    volumes: [./scripts/worker.mjs:/app/worker.mjs:ro]
+    command: ["node", "worker.mjs"]
+    environment:
+      APP_URL: http://app:3000
+      CRON_SECRET: ${CRON_SECRET}
+    depends_on: [app]
+    restart: unless-stopped
+
+volumes:
+  pgdata:

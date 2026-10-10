@@ -1,0 +1,645 @@
+<title>VENTUREX Ad Spots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Noto+Sans+Georgian:wght@500;700&display=swap">
+<style>
+  /* Layout: brand header, one settings row, then three phone-shaped players side by side (stacking on phones). Single dark look = VENTUREX brand. */
+  :root {
+    --ink: #03050b;
+    --panel: #0a0f1f;
+    --line: rgb(148 163 184 / 0.16);
+    --fg: #f1f5f9;
+    --muted: #94a3b8;
+    --dim: #64748b;
+    --electric: #3b82f6;
+    --violet: #8b5cf6;
+    --cyan: #22d3ee;
+    --display: "Sora", "Noto Sans Georgian", ui-sans-serif, system-ui, sans-serif;
+    --body: "Inter", "Noto Sans Georgian", ui-sans-serif, system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  body { background: var(--ink); color: var(--fg); font: 15px/1.55 var(--body); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 20px 64px; display: grid; gap: 32px; }
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 12px; font: 700 15px var(--display); letter-spacing: .18em; }
+  .brand svg { width: 34px; height: 34px; }
+  h1 { margin: 14px 0 6px; font: 600 clamp(28px, 4vw, 40px)/1.15 var(--display); text-wrap: balance; }
+  .lede { margin: 0; color: var(--muted); max-width: 60ch; }
+  .setting { display: grid; gap: 6px; min-width: 0; }
+  .setting label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
+  .setting input { width: min(280px, 100%); padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); font: inherit; }
+  .setting input:focus-visible, button:focus-visible, input[type=range]:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 28px; }
+  .ad { display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .ad h2 { margin: 0; font: 600 20px var(--display); }
+  .ad .angle { margin: 0; color: var(--muted); font-size: 14px; }
+  .screen { width: 100%; max-width: 100%; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #000; box-shadow: 0 30px 80px -30px rgb(59 130 246 / .45); }
+  .screen canvas { width: 100%; height: 100%; display: block; cursor: pointer; }
+  .controls { display: flex; align-items: center; gap: 10px; }
+  .controls button { flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel); color: var(--fg); font-size: 14px; cursor: pointer; }
+  .controls button:hover { border-color: var(--electric); }
+  .controls input[type=range] { flex: 1; min-width: 0; accent-color: var(--electric); }
+  .controls time { font: 500 13px var(--body); font-variant-numeric: tabular-nums; color: var(--muted); min-width: 4.5ch; text-align: right; }
+  .dl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .dl button { padding: 10px 18px; border-radius: 999px; border: 0; background: linear-gradient(90deg, var(--electric), var(--violet)); color: #fff; font: 600 14px var(--body); cursor: pointer; }
+  .dl button:disabled { opacity: .6; cursor: progress; }
+  .dl span { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  details { border-top: 1px solid var(--line); padding-top: 10px; }
+  summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  details ol { margin: 10px 0 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+  details li { display: grid; grid-template-columns: 5.5ch 1fr; gap: 8px; }
+  details li span { color: var(--dim); font-variant-numeric: tabular-nums; }
+  .caption { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .caption b { color: var(--fg); font-weight: 600; }
+  footer { color: var(--dim); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; max-width: 75ch; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg)"/><path d="M20 20l24 24M44 20L20 44" stroke="#fff" stroke-width="7" stroke-linecap="round"/></svg>
+        VENTUREX
+      </div>
+      <h1>Three 15-second spots</h1>
+      <p class="lede">Vertical 9:16 ads for Reels, TikTok and Shorts. Each one sells a different reason to use the marketplace: live auctions, selling a project, and protected payments. Click a video to pause it, or download it as an MP4.</p>
+    </div>
+    <div class="setting">
+      <label for="url">Website on the end card</label>
+      <input id="url" type="text" placeholder="yourdomain.com" autocomplete="off">
+    </div>
+  </header>
+
+  <section class="grid" id="grid"></section>
+
+  <footer>
+    Listings, prices and bidders shown in the spots are examples and are labelled as such on screen. The spots are silent so you can add licensed music or a voice-over in your editor. Masters are 1080 × 1920, 30 fps, H.264.
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.1.3/build/mp4-muxer.js"></script>
+<script>
+const W = 1080, H = 1920;
+const C = { ink: '#03050b', ink8: '#0d1428', el: '#3b82f6', el4: '#60a5fa', vi: '#8b5cf6', vi4: '#a78bfa', cy: '#22d3ee', gold: '#f5c451', ok: '#34d399', warn: '#fbbf24', red: '#f43f5e', txt: '#f8fafc', mut: '#94a3b8', dim: '#64748b' };
+const FS = "Sora, 'Noto Sans Georgian', Inter, sans-serif";
+const FI = "Inter, 'Noto Sans Georgian', sans-serif";
+const state = { url: '' };
+
+/* ---------- math ---------- */
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const p = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const span = (t, a, b, f = .35) => Math.min(a <= 0 ? 1 : p(t, a, a + f), 1 - p(t, b - f, b));
+const usd = v => '$' + Math.round(v).toLocaleString('en-US');
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+/* ---------- drawing helpers ---------- */
+function T(ctx, str, x, y, o = {}) {
+  const { size = 48, weight = 600, fam = FS, color = C.txt, align = 'left', alpha = 1, ls = 0, maxW = 0, base = 'alphabetic', grad = false } = o;
+  if (alpha <= 0.001) return 0;
+  ctx.save(); ctx.globalAlpha *= alpha;
+  let s = size; ctx.font = `${weight} ${s}px ${fam}`; ctx.letterSpacing = ls + 'px';
+  let w = ctx.measureText(str).width;
+  if (maxW && w > maxW) { s = s * maxW / w; ctx.font = `${weight} ${s}px ${fam}`; w = ctx.measureText(str).width; }
+  ctx.textAlign = align; ctx.textBaseline = base;
+  if (grad) {
+    const x0 = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    const g = ctx.createLinearGradient(x0, 0, x0 + w, 0);
+    g.addColorStop(0, C.el4); g.addColorStop(.55, C.vi4); g.addColorStop(1, C.cy);
+    ctx.fillStyle = g;
+  } else ctx.fillStyle = color;
+  ctx.fillText(str, x, y); ctx.restore();
+  return w;
+}
+function rise(ctx, str, x, y, t, t0, o = {}) {
+  const a = eo(p(t, t0, t0 + .55));
+  T(ctx, str, x, y + (1 - a) * 60, { ...o, alpha: a * (o.alpha ?? 1) });
+}
+function blob(ctx, x, y, r, col) {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, col); g.addColorStop(1, 'rgba(3,5,11,0)');
+  ctx.fillStyle = g; ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+}
+function bg(ctx, t, tint = 0) {
+  ctx.fillStyle = C.ink; ctx.fillRect(0, 0, W, H);
+  blob(ctx, 220 + Math.sin(t * .5) * 140, 420 + Math.cos(t * .4) * 120, 760, 'rgba(59,130,246,.34)');
+  blob(ctx, 880 + Math.cos(t * .35) * 120, 1350 + Math.sin(t * .45) * 140, 820, tint ? 'rgba(34,211,238,.22)' : 'rgba(139,92,246,.32)');
+  blob(ctx, 600 + Math.sin(t * .3 + 2) * 200, 900, 520, 'rgba(139,92,246,.14)');
+  ctx.save(); ctx.strokeStyle = 'rgba(148,163,184,.055)'; ctx.lineWidth = 2;
+  const off = (t * 18) % 90;
+  ctx.beginPath();
+  for (let x = 0; x <= W; x += 90) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+  for (let y = -90 + off; y <= H; y += 90) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+  ctx.stroke(); ctx.restore();
+  const v = ctx.createRadialGradient(W / 2, H / 2, H * .35, W / 2, H / 2, H * .75);
+  v.addColorStop(0, 'rgba(3,5,11,0)'); v.addColorStop(1, 'rgba(3,5,11,.75)');
+  ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+}
+function logo(ctx, cx, cy, s) {
+  ctx.save(); ctx.translate(cx - s / 2, cy - s / 2);
+  const g = ctx.createLinearGradient(0, 0, s, s); g.addColorStop(0, C.el); g.addColorStop(1, C.vi);
+  ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(0, 0, s, s, s * 14 / 64); ctx.fill();
+  const k = s / 64; ctx.strokeStyle = '#fff'; ctx.lineWidth = 7 * k; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(20 * k, 20 * k); ctx.lineTo(44 * k, 44 * k); ctx.moveTo(44 * k, 20 * k); ctx.lineTo(20 * k, 44 * k); ctx.stroke();
+  ctx.restore();
+}
+function brand(ctx, alpha = 1) {
+  if (alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha *= alpha;
+  logo(ctx, 126, 150, 72);
+  T(ctx, 'VENTUREX', 184, 152, { size: 38, weight: 700, base: 'middle', ls: 6 });
+  ctx.restore();
+}
+function panel(ctx, x, y, w, h, r = 40, fill = 'rgba(13,20,40,.82)') {
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 80; ctx.shadowOffsetY = 30;
+  ctx.fillStyle = fill; ctx.beginPath(); ctx.roundRect(x, y, w, h, r); ctx.fill();
+  ctx.shadowColor = 'transparent';
+  ctx.strokeStyle = 'rgba(148,163,184,.2)'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.restore();
+}
+function pill(ctx, x, y, str, o = {}) {
+  const { size = 28, bg = 'rgba(255,255,255,.08)', color = C.txt, align = 'left', alpha = 1, dot = null, weight = 600 } = o;
+  if (alpha <= 0.001) return 0;
+  ctx.save(); ctx.globalAlpha *= alpha;
+  ctx.font = `${weight} ${size}px ${FI}`; ctx.letterSpacing = '0px';
+  const padX = size * .8, dotW = dot ? size * .9 : 0;
+  const w = ctx.measureText(str).width + padX * 2 + dotW, h = size * 1.9;
+  const x0 = align === 'right' ? x - w : align === 'center' ? x - w / 2 : x;
+  ctx.fillStyle = bg; ctx.beginPath(); ctx.roundRect(x0, y - h / 2, w, h, h / 2); ctx.fill();
+  if (dot) { ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(x0 + padX + size * .25, y, size * .25, 0, 7); ctx.fill(); }
+  ctx.fillStyle = color; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  ctx.fillText(str, x0 + padX + dotW, y + 1);
+  ctx.restore();
+  return w;
+}
+function check(ctx, cx, cy, s, prog, color = '#fff') {
+  if (prog <= 0) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = s * .16; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const pts = [[-.32, .02], [-.08, .26], [.36, -.24]];
+  ctx.beginPath(); ctx.moveTo(cx + pts[0][0] * s, cy + pts[0][1] * s);
+  const l1 = .4, k = prog;
+  if (k < l1) { const q = k / l1; ctx.lineTo(cx + lerp(pts[0][0], pts[1][0], q) * s, cy + lerp(pts[0][1], pts[1][1], q) * s); }
+  else { ctx.lineTo(cx + pts[1][0] * s, cy + pts[1][1] * s); const q = (k - l1) / (1 - l1); ctx.lineTo(cx + lerp(pts[1][0], pts[2][0], q) * s, cy + lerp(pts[1][1], pts[2][1], q) * s); }
+  ctx.stroke(); ctx.restore();
+}
+function confetti(ctx, t, x, y, seed = 7) {
+  if (t <= 0 || t > 3) return;
+  const r = rng(seed), cols = [C.el4, C.vi4, C.cy, C.gold, C.ok, '#fff'];
+  ctx.save();
+  for (let i = 0; i < 140; i++) {
+    const ang = r() * Math.PI * 2, sp = 500 + r() * 1300, col = cols[i % cols.length];
+    const vx = Math.cos(ang) * sp, vy = Math.sin(ang) * sp - 700, rot = r() * 6, w = 14 + r() * 16;
+    const px = x + vx * t, py = y + vy * t + 1500 * t * t;
+    ctx.globalAlpha = clamp(1.4 - t * .55);
+    ctx.save(); ctx.translate(px, py); ctx.rotate(rot + t * 8 * (r() - .5));
+    ctx.fillStyle = col; ctx.fillRect(-w / 2, -w / 4, w, w / 2); ctx.restore();
+  }
+  ctx.restore();
+}
+function endCard(ctx, t, t0, o) {
+  const a = p(t, t0, t0 + .5); if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= eo(a);
+  logo(ctx, 540, 520, 170 * (0.55 + 0.45 * back(p(t, t0, t0 + .7))));
+  T(ctx, 'VENTUREX', 540, 700, { size: 54, weight: 700, align: 'center', ls: 14, alpha: p(t, t0 + .2, t0 + .6) });
+  o.lines.forEach((l, i) => rise(ctx, l, 540, 880 + i * 118, t, t0 + .35 + i * .14, { size: 100, weight: 700, align: 'center', maxW: 940, grad: i === o.lines.length - 1 }));
+  const yS = 880 + o.lines.length * 118 + 10;
+  rise(ctx, o.sub, 540, yS, t, t0 + .75, { size: 40, weight: 500, fam: FI, color: C.mut, align: 'center', maxW: 920 });
+  const bA = eo(p(t, t0 + .95, t0 + 1.4));
+  if (bA > 0) {
+    ctx.save(); ctx.globalAlpha *= bA;
+    const sc = (0.85 + 0.15 * back(p(t, t0 + .95, t0 + 1.4))) * (1 + 0.025 * Math.sin((t - t0) * 5));
+    ctx.translate(540, yS + 200); ctx.scale(sc, sc);
+    ctx.font = `700 46px ${FS}`; const bw = Math.max(560, ctx.measureText(o.cta).width + 220), bh = 132;
+    ctx.shadowColor = 'rgba(99,102,241,.7)'; ctx.shadowBlur = 70;
+    const g = ctx.createLinearGradient(-bw / 2, 0, bw / 2, 0); g.addColorStop(0, C.el); g.addColorStop(1, C.vi);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(-bw / 2, -bh / 2, bw, bh, bh / 2); ctx.fill();
+    ctx.shadowColor = 'transparent';
+    T(ctx, o.cta + '  →', 0, 2, { size: 46, weight: 700, align: 'center', base: 'middle' });
+    ctx.restore();
+  }
+  if (state.url) T(ctx, state.url, 540, yS + 360, { size: 40, weight: 600, fam: FI, color: C.txt, align: 'center', alpha: p(t, t0 + 1.2, t0 + 1.6), maxW: 900 });
+  T(ctx, 'English · ქართული · Русский     USD · GEL · EUR · RUB', 540, 1800, { size: 28, weight: 500, fam: FI, color: C.dim, align: 'center', alpha: p(t, t0 + 1.3, t0 + 1.8), maxW: 960 });
+  ctx.restore();
+}
+
+/* ---------- AD 1 · Live auction ---------- */
+const BIDS = [
+  [3.7, 40500, 'M', 4417], [4.4, 42000, 'A', 2093], [5.1, 43500, 'K', 7731, 'proxy'], [5.8, 45000, 'D', 1186],
+  [6.6, 46500, 'M', 4417], [7.3, 48000, 'K', 7731, 'proxy'], [8.2, 50000, 'L', 5508, 'snipe'], [9.0, 52000, 'K', 7731, 'proxy']
+];
+const AV = { M: C.el4, A: C.ok, K: C.vi4, D: C.warn, L: C.cy };
+function remaining(t) {
+  if (t < 8.2) return Math.max(0, 20 - (t - 3) * 3);
+  if (t < 8.7) return 124 - (t - 8.2) * 2;
+  return Math.max(0, 123 - (t - 8.7) * 72);
+}
+const mmss = s => { s = Math.ceil(s); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+function drawAuction(ctx, t) {
+  bg(ctx, t);
+  brand(ctx, 1 - p(t, 11.4, 11.8));
+
+  // Hook
+  const h = span(t, 0, 2.9);
+  if (h > 0) {
+    ctx.save(); ctx.globalAlpha = h;
+    pill(ctx, 90, 640, 'LIVE NOW', { size: 30, bg: 'rgba(244,63,94,.16)', color: '#fda4af', dot: C.red });
+    rise(ctx, 'Websites and', 90, 820, t, 0.05, { size: 112, weight: 700 });
+    rise(ctx, 'SaaS businesses,', 90, 945, t, 0.2, { size: 112, weight: 700, maxW: 900 });
+    rise(ctx, 'sold live.', 90, 1070, t, 0.35, { size: 112, weight: 700, grad: true });
+    rise(ctx, 'Real-time auctions with automatic bidding.', 90, 1180, t, 0.8, { size: 40, weight: 500, fam: FI, color: C.mut, maxW: 900 });
+    ctx.restore();
+  }
+
+  // Auction card
+  const ca = span(t, 2.6, 11.8, .45);
+  if (ca > 0) {
+    const enter = eo(p(t, 2.6, 3.25));
+    const x = 70, y = 300 + (1 - enter) * 260, w = 940;
+    ctx.save(); ctx.globalAlpha = ca;
+    panel(ctx, x, y, w, 1000);
+    // thumbnail
+    ctx.save(); ctx.beginPath(); ctx.roundRect(x + 20, y + 20, w - 40, 340, 26); ctx.clip();
+    const tg = ctx.createLinearGradient(x, y, x + w, y + 340); tg.addColorStop(0, 'rgba(59,130,246,.65)'); tg.addColorStop(1, 'rgba(139,92,246,.75)');
+    ctx.fillStyle = tg; ctx.fillRect(x + 20, y + 20, w - 40, 340);
+    ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 2; ctx.beginPath();
+    for (let gx = x + 20; gx < x + w; gx += 60) { ctx.moveTo(gx, y + 20); ctx.lineTo(gx, y + 360); }
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(3,5,11,.6)'; ctx.beginPath(); ctx.roundRect(x + 90, y + 100, w - 180, 240, 18); ctx.fill();
+    [C.red, C.warn, C.ok].forEach((c, i) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x + 122 + i * 30, y + 128, 8, 0, 7); ctx.fill(); });
+    const pts = [0, .12, .1, .26, .3, .45, .42, .6, .72, .7, .88, 1];
+    const cx0 = x + 130, cw = w - 260, cy0 = y + 310, chh = 140, draw = eo(p(t, 3.0, 4.2));
+    ctx.beginPath(); ctx.moveTo(cx0, cy0);
+    pts.forEach((v, i) => { const px = cx0 + cw * i / (pts.length - 1); if (i / (pts.length - 1) <= draw) ctx.lineTo(px, cy0 - v * chh); });
+    ctx.strokeStyle = C.cy; ctx.lineWidth = 6; ctx.lineJoin = 'round'; ctx.stroke();
+    ctx.restore();
+    const blink = .55 + .45 * Math.sin(t * 7);
+    pill(ctx, x + 50, y + 66, 'LIVE AUCTION', { size: 26, bg: 'rgba(3,5,11,.7)', color: '#fff', dot: `rgba(244,63,94,${blink})` });
+    pill(ctx, x + w - 50, y + 66, 'Example listing', { size: 24, bg: 'rgba(3,5,11,.6)', color: C.mut, align: 'right', weight: 500 });
+
+    T(ctx, 'Invoicing SaaS for freelancers', x + 40, y + 440, { size: 52, weight: 600, maxW: w - 80 });
+    T(ctx, 'SaaS  ·  Founded 2023  ·  1,240 customers', x + 40, y + 495, { size: 30, weight: 500, fam: FI, color: C.mut });
+
+    const done = BIDS.filter(b => t >= b[0]);
+    const stats = [['MONTHLY REVENUE', '$3,850'], ['PROFIT MARGIN', '78%'], ['BIDS', String(23 + done.length)]];
+    stats.forEach(([l, v], i) => {
+      const bx = x + 40 + i * 293, by = y + 535;
+      ctx.fillStyle = 'rgba(255,255,255,.045)'; ctx.beginPath(); ctx.roundRect(bx, by, 273, 130, 20); ctx.fill();
+      T(ctx, l, bx + 24, by + 46, { size: 21, weight: 600, fam: FI, color: C.dim, ls: 2, maxW: 230 });
+      T(ctx, v, bx + 24, by + 104, { size: 46, weight: 600 });
+    });
+
+    // current bid with tween
+    const last = done[done.length - 1], prev = done[done.length - 2];
+    const from = prev ? prev[1] : 38000, to = last ? last[1] : 38000;
+    const tw = last ? eo(p(t, last[0], last[0] + .35)) : 1;
+    const flash = last ? 1 - p(t, last[0], last[0] + .7) : 0;
+    const sold = t >= 10.4;
+    if (flash > 0) { ctx.save(); ctx.globalAlpha *= flash * .6; ctx.fillStyle = 'rgba(52,211,153,.22)'; ctx.beginPath(); ctx.roundRect(x + 24, y + 700, w - 48, 200, 24); ctx.fill(); ctx.restore(); }
+    T(ctx, sold ? 'WINNING BID' : 'CURRENT BID', x + 40, y + 755, { size: 26, weight: 600, fam: FI, color: C.dim, ls: 4 });
+    T(ctx, usd(lerp(from, to, tw)), x + 36, y + 870, { size: 118, weight: 700, color: flash > .5 ? '#a7f3d0' : C.txt });
+
+    const rem = remaining(t);
+    const urgent = rem < 10 && !sold;
+    pill(ctx, x + w - 40, y + 745, sold ? 'Auction ended' : 'Ends in ' + mmss(rem), { size: 30, align: 'right', bg: urgent ? 'rgba(244,63,94,.18)' : 'rgba(255,255,255,.08)', color: urgent ? '#fda4af' : C.txt, dot: urgent ? C.red : C.ok });
+
+    // contextual badge
+    let badge = null;
+    if (t >= 8.2 && t < 9.9) badge = ['Last-second bid: +2:00 added. No sniping.', 'rgba(251,191,36,.16)', C.warn, 8.2];
+    else if (last && last[4] === 'proxy' && t < last[0] + 1.2) badge = ['Proxy bid raised automatically', 'rgba(34,211,238,.14)', C.cy, last[0]];
+    if (badge) pill(ctx, x + 40, y + 945, badge[0], { size: 28, bg: badge[1], color: badge[2], alpha: eo(p(t, badge[3], badge[3] + .3)) });
+    ctx.restore();
+
+    // bid feed
+    ctx.save(); ctx.globalAlpha = ca;
+    const feed = done.slice().reverse().slice(0, 5);
+    const eNew = last ? eo(p(t, last[0], last[0] + .4)) : 1;
+    T(ctx, 'BID HISTORY', 90, 1385 + (1 - enter) * 260, { size: 24, weight: 600, fam: FI, color: C.dim, ls: 4, alpha: p(t, 3.4, 3.8) });
+    feed.forEach((b, i) => {
+      const ry = 1420 + (i - (1 - eNew)) * 110 + (1 - enter) * 260;
+      let a = 1, dx = 0;
+      if (i === 0) { a = eNew; dx = (1 - eNew) * -80; }
+      if (i === 4) a = clamp(1 - eNew * 2.5);
+      if (a <= 0) return;
+      ctx.save(); ctx.globalAlpha *= a; ctx.translate(dx, 0);
+      ctx.fillStyle = i === 0 ? 'rgba(59,130,246,.14)' : 'rgba(255,255,255,.04)'; ctx.beginPath(); ctx.roundRect(70, ry, 940, 94, 22); ctx.fill();
+      ctx.fillStyle = AV[b[2]]; ctx.beginPath(); ctx.arc(125, ry + 47, 26, 0, 7); ctx.fill();
+      T(ctx, b[2], 125, ry + 49, { size: 28, weight: 700, align: 'center', base: 'middle', color: C.ink });
+      T(ctx, 'Bidder #' + b[3], 172, ry + 49, { size: 32, weight: 600, fam: FI, base: 'middle' });
+      if (b[4] === 'proxy') pill(ctx, 470, ry + 47, 'auto', { size: 22, bg: 'rgba(34,211,238,.14)', color: C.cy });
+      T(ctx, usd(b[1]), 980, ry + 49, { size: 36, weight: 600, align: 'right', base: 'middle' });
+      ctx.restore();
+    });
+    ctx.restore();
+  }
+
+  // SOLD
+  if (t >= 10.4 && t < 11.9) {
+    const s = p(t, 10.4, 10.75), a = span(t, 10.4, 11.9, .3);
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(540, 820); ctx.rotate(-.18); ctx.scale(lerp(2.2, 1, eo(s)), lerp(2.2, 1, eo(s)));
+    ctx.fillStyle = 'rgba(3,5,11,.75)'; ctx.beginPath(); ctx.roundRect(-330, -150, 660, 300, 36); ctx.fill();
+    ctx.strokeStyle = C.gold; ctx.lineWidth = 14; ctx.stroke();
+    T(ctx, 'SOLD', 0, 10, { size: 190, weight: 800, align: 'center', base: 'middle', color: C.gold, ls: 12 });
+    ctx.restore();
+    confetti(ctx, t - 10.5, 540, 820);
+  }
+
+  endCard(ctx, t, 11.8, { lines: ['Buy. Sell.', 'Auction.'], sub: 'Websites, SaaS, e-commerce, apps and domains.', cta: 'Join live auctions' });
+}
+
+/* ---------- AD 2 · Sell your project ---------- */
+function icon(ctx, kind, cx, cy, s) {
+  ctx.save(); ctx.strokeStyle = '#fff'; ctx.fillStyle = '#fff'; ctx.lineWidth = s * .09; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const r = s * .38;
+  ctx.beginPath();
+  if (kind === 'globe') { ctx.arc(cx, cy, r, 0, 7); ctx.moveTo(cx - r, cy); ctx.lineTo(cx + r, cy); ctx.stroke(); ctx.beginPath(); ctx.ellipse(cx, cy, r * .45, r, 0, 0, 7); }
+  else if (kind === 'cloud') { ctx.arc(cx - r * .45, cy + r * .1, r * .45, Math.PI * .5, Math.PI * 1.5); ctx.arc(cx + r * .05, cy - r * .2, r * .55, Math.PI * 1.1, Math.PI * 1.95); ctx.arc(cx + r * .55, cy + r * .15, r * .4, Math.PI * 1.5, Math.PI * .5); ctx.closePath(); }
+  else if (kind === 'cart') { ctx.moveTo(cx - r, cy - r * .7); ctx.lineTo(cx - r * .7, cy - r * .7); ctx.lineTo(cx - r * .4, cy + r * .35); ctx.lineTo(cx + r * .75, cy + r * .35); ctx.lineTo(cx + r, cy - r * .4); ctx.lineTo(cx - r * .55, cy - r * .4); ctx.stroke(); ctx.beginPath(); ctx.arc(cx - r * .3, cy + r * .75, r * .12, 0, 7); ctx.arc(cx + r * .6, cy + r * .75, r * .12, 0, 7); ctx.fill(); ctx.restore(); return; }
+  else if (kind === 'phone') { ctx.roundRect(cx - r * .55, cy - r, r * 1.1, r * 2, r * .2); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy + r * .7, r * .08, 0, 7); ctx.fill(); ctx.restore(); return; }
+  else if (kind === 'domain') { ctx.restore(); T(ctx, '.com', cx, cy + 2, { size: s * .36, weight: 700, align: 'center', base: 'middle' }); return; }
+  else if (kind === 'rocket') { ctx.moveTo(cx, cy - r); ctx.quadraticCurveTo(cx + r * .55, cy - r * .3, cx + r * .32, cy + r * .45); ctx.lineTo(cx - r * .32, cy + r * .45); ctx.quadraticCurveTo(cx - r * .55, cy - r * .3, cx, cy - r); ctx.moveTo(cx - r * .32, cy + r * .2); ctx.lineTo(cx - r * .62, cy + r * .6); ctx.moveTo(cx + r * .32, cy + r * .2); ctx.lineTo(cx + r * .62, cy + r * .6); ctx.moveTo(cx, cy + r * .6); ctx.lineTo(cx, cy + r * .95); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy - r * .25, r * .14, 0, 7); }
+  ctx.stroke(); ctx.restore();
+}
+const CATS = [['globe', 'Websites', 'Content & blogs'], ['cloud', 'SaaS', 'Recurring revenue'], ['cart', 'E-commerce', 'Online stores'], ['phone', 'Mobile apps', 'iOS & Android'], ['domain', 'Domains', 'Premium names'], ['rocket', 'Starter Market', 'No revenue needed']];
+function drawSeller(ctx, t) {
+  bg(ctx, t, 1);
+  brand(ctx, 1 - p(t, 11.0, 11.4));
+
+  const h = span(t, 0, 2.9);
+  if (h > 0) {
+    ctx.save(); ctx.globalAlpha = h;
+    rise(ctx, 'Built a side', 90, 760, t, 0.05, { size: 120, weight: 700 });
+    rise(ctx, 'project?', 90, 890, t, 0.2, { size: 120, weight: 700 });
+    rise(ctx, 'Someone wants', 90, 1080, t, 1.0, { size: 120, weight: 700, grad: true, maxW: 900 });
+    rise(ctx, 'to buy it.', 90, 1210, t, 1.15, { size: 120, weight: 700, grad: true });
+    ctx.restore();
+  }
+
+  const g = span(t, 2.7, 6.6);
+  if (g > 0) {
+    ctx.save(); ctx.globalAlpha = g;
+    rise(ctx, 'Sell any digital', 90, 400, t, 2.75, { size: 84, weight: 700 });
+    rise(ctx, 'business.', 90, 500, t, 2.85, { size: 84, weight: 700, grad: true });
+    CATS.forEach(([k, name, sub], i) => {
+      const col = i % 2, row = Math.floor(i / 2), t0 = 3.2 + i * .2;
+      const s = back(p(t, t0, t0 + .45)), a = p(t, t0, t0 + .25);
+      if (a <= 0) return;
+      const bx = 90 + col * 460, by = 600 + row * 330, bw = 440, bh = 300;
+      ctx.save(); ctx.globalAlpha *= a; ctx.translate(bx + bw / 2, by + bh / 2); ctx.scale(s, s); ctx.translate(-bw / 2, -bh / 2);
+      panel(ctx, 0, 0, bw, bh, 32, 'rgba(13,20,40,.78)');
+      const ig = ctx.createLinearGradient(40, 40, 150, 150); ig.addColorStop(0, i === 5 ? C.cy : C.el); ig.addColorStop(1, C.vi);
+      ctx.fillStyle = ig; ctx.beginPath(); ctx.roundRect(40, 40, 110, 110, 26); ctx.fill();
+      icon(ctx, k, 95, 95, 100);
+      T(ctx, name, 40, 210, { size: 44, weight: 600, maxW: 360 });
+      T(ctx, sub, 40, 256, { size: 28, weight: 500, fam: FI, color: C.mut });
+      ctx.restore();
+    });
+    ctx.restore();
+  }
+
+  const v = span(t, 6.4, 11.2);
+  if (v > 0) {
+    ctx.save(); ctx.globalAlpha = v;
+    rise(ctx, 'Know what', 90, 400, t, 6.45, { size: 84, weight: 700 });
+    rise(ctx, "it's worth.", 90, 500, t, 6.55, { size: 84, weight: 700, grad: true });
+    const enter = eo(p(t, 6.5, 7.1)), y = 580 + (1 - enter) * 200;
+    panel(ctx, 70, y, 940, 1180);
+    pill(ctx, 120, y + 70, 'AI-assisted valuation', { size: 28, bg: 'rgba(139,92,246,.18)', color: C.vi4, dot: C.vi4 });
+    pill(ctx, 960, y + 70, 'Example', { size: 24, bg: 'rgba(255,255,255,.06)', color: C.mut, align: 'right', weight: 500 });
+    const rows = [['Category', 'SaaS'], ['Monthly revenue', '$2,400'], ['Monthly profit', '$1,900'], ['Business age', '3 years']];
+    rows.forEach(([l, val], i) => {
+      const t0 = 6.9 + i * .28, a = eo(p(t, t0, t0 + .35)), ry = y + 140 + i * 100;
+      if (a <= 0) return;
+      ctx.save(); ctx.globalAlpha *= a; ctx.translate((1 - a) * 40, 0);
+      ctx.fillStyle = 'rgba(255,255,255,.045)'; ctx.beginPath(); ctx.roundRect(110, ry, 860, 82, 18); ctx.fill();
+      T(ctx, l, 140, ry + 42, { size: 32, weight: 500, fam: FI, color: C.mut, base: 'middle' });
+      const typed = val.slice(0, Math.ceil(val.length * p(t, t0 + .1, t0 + .45)));
+      T(ctx, typed, 940, ry + 42, { size: 34, weight: 600, align: 'right', base: 'middle' });
+      ctx.restore();
+    });
+    // gauge
+    const gx = 540, gy = y + 1010, gr = 300, fill = eio(p(t, 8.2, 9.8));
+    ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 46;
+    ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.beginPath(); ctx.arc(gx, gy, gr, Math.PI, 2 * Math.PI); ctx.stroke();
+    if (fill > .01) {
+      const gg = ctx.createLinearGradient(gx - gr, 0, gx + gr, 0); gg.addColorStop(0, C.el); gg.addColorStop(.6, C.vi); gg.addColorStop(1, C.cy);
+      ctx.strokeStyle = gg; ctx.beginPath(); ctx.arc(gx, gy, gr, Math.PI, Math.PI + Math.PI * .78 * fill); ctx.stroke();
+      const na = Math.PI + Math.PI * .78 * fill;
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(gx + Math.cos(na) * gr, gy + Math.sin(na) * gr, 16, 0, 7); ctx.fill();
+    }
+    ctx.restore();
+    T(ctx, 'ESTIMATED RANGE', gx, gy - 190, { size: 24, weight: 600, fam: FI, color: C.dim, align: 'center', ls: 4, alpha: p(t, 8.2, 8.5) });
+    T(ctx, usd(38000 * fill) + ' – ' + usd(52000 * fill), gx, gy - 95, { size: 72, weight: 700, align: 'center', alpha: p(t, 8.2, 8.5), maxW: 440 });
+    T(ctx, 'Based on revenue, profit and age', gx, gy + 100, { size: 28, weight: 500, fam: FI, color: C.mut, align: 'center', alpha: p(t, 9.6, 10) });
+    ctx.restore();
+  }
+
+  endCard(ctx, t, 11.2, { lines: ['Your project', 'has buyers.'], sub: 'List it on VENTUREX and reach them.', cta: 'Value your business' });
+}
+
+/* ---------- AD 3 · Protected payment ---------- */
+const STAGES = ['Verified payment', 'Seller prepares the assets', 'Domain & hosting transfer', 'Code & assets delivered', 'Buyer reviews everything', 'Both sides confirm', 'Funds released to seller', 'Deal complete'];
+function node(ctx, cx, cy, r, label, sub, o = {}) {
+  ctx.save();
+  ctx.fillStyle = o.fill || 'rgba(13,20,40,.85)'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill();
+  ctx.strokeStyle = o.stroke || 'rgba(148,163,184,.25)'; ctx.lineWidth = o.lw || 3; ctx.stroke();
+  ctx.restore();
+  T(ctx, label, cx, cy + r + 62, { size: 36, weight: 600, align: 'center' });
+  if (sub) T(ctx, sub, cx, cy + r + 106, { size: 26, weight: 500, fam: FI, color: o.subColor || C.mut, align: 'center' });
+}
+function person(ctx, cx, cy, s) {
+  ctx.save(); ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.arc(cx, cy - s * .22, s * .2, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(cx, cy + s * .3, s * .34, s * .22, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function lock(ctx, cx, cy, s, closed) {
+  ctx.save(); ctx.strokeStyle = '#fff'; ctx.fillStyle = '#fff'; ctx.lineWidth = s * .1; ctx.lineCap = 'round';
+  const lift = (1 - closed) * s * .22;
+  ctx.beginPath(); ctx.arc(cx, cy - s * .12 - lift, s * .24, Math.PI, 2 * Math.PI); ctx.lineTo(cx + s * .24, cy + s * .05 - lift * (closed < 1 ? 1 : 0)); ctx.moveTo(cx - s * .24, cy - s * .12 - lift); ctx.lineTo(cx - s * .24, cy + s * .05); ctx.stroke();
+  ctx.beginPath(); ctx.roundRect(cx - s * .36, cy, s * .72, s * .52, s * .08); ctx.fill();
+  ctx.restore();
+}
+function drawTrust(ctx, t) {
+  bg(ctx, t);
+  brand(ctx, 1 - p(t, 11.4, 11.8));
+
+  const h = span(t, 0, 2.9);
+  if (h > 0) {
+    ctx.save(); ctx.globalAlpha = h;
+    rise(ctx, 'Buying a', 90, 720, t, 0.05, { size: 120, weight: 700 });
+    rise(ctx, 'business online?', 90, 850, t, 0.2, { size: 120, weight: 700, maxW: 900 });
+    rise(ctx, "Don't just wire", 90, 1050, t, 1.0, { size: 92, weight: 700, color: C.mut, maxW: 900 });
+    rise(ctx, 'money and hope.', 90, 1155, t, 1.15, { size: 92, weight: 700, color: C.mut, maxW: 900 });
+    // strike-through
+    const st = eo(p(t, 1.8, 2.3));
+    if (st > 0) { ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(80, 1080); ctx.lineTo(80 + 880 * st, 1080 - 40 * st); ctx.stroke(); ctx.restore(); }
+    ctx.restore();
+  }
+
+  const f = span(t, 2.7, 7.4);
+  if (f > 0) {
+    ctx.save(); ctx.globalAlpha = f;
+    rise(ctx, 'Your money is held,', 90, 420, t, 2.75, { size: 80, weight: 700, maxW: 900 });
+    rise(ctx, 'not sent.', 90, 518, t, 2.88, { size: 80, weight: 700, grad: true });
+    const y = 900, closed = eo(p(t, 4.9, 5.2)), arrived = p(t, 3.7, 4.8);
+    // links
+    ctx.save(); ctx.setLineDash([14, 14]); ctx.lineDashOffset = -t * 40; ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(148,163,184,.35)'; ctx.beginPath(); ctx.moveTo(300, y); ctx.lineTo(420, y); ctx.stroke();
+    ctx.strokeStyle = closed >= 1 ? 'rgba(148,163,184,.15)' : 'rgba(148,163,184,.35)'; ctx.beginPath(); ctx.moveTo(660, y); ctx.lineTo(780, y); ctx.stroke();
+    ctx.restore();
+    node(ctx, 195, y, 105, 'Buyer', 'Pays securely');
+    person(ctx, 195, y, 130);
+    const glow = closed;
+    node(ctx, 540, y, 130, 'Protected', 'Held until handover', { fill: `rgba(59,130,246,${.18 + .22 * glow})`, stroke: glow ? C.el4 : 'rgba(148,163,184,.25)', lw: 3 + 4 * glow, subColor: glow ? C.el4 : C.mut });
+    lock(ctx, 540, y - 20, 120, closed);
+    node(ctx, 885, y, 105, 'Seller', 'Waits for sign-off', { subColor: C.warn });
+    person(ctx, 885, y, 130);
+    // coin
+    if (arrived > 0 && arrived < 1) {
+      const cx = lerp(195, 540, eio(arrived)), cy = y - 220 - Math.sin(arrived * Math.PI) * 120;
+      ctx.save(); ctx.fillStyle = C.gold; ctx.shadowColor = C.gold; ctx.shadowBlur = 40; ctx.beginPath(); ctx.arc(cx, cy, 52, 0, 7); ctx.fill(); ctx.restore();
+      T(ctx, '$', cx, cy + 2, { size: 56, weight: 800, align: 'center', base: 'middle', color: '#3b2a00' });
+    }
+    pill(ctx, 540, y - 210, usd(52000) + ' secured', { size: 32, align: 'center', bg: 'rgba(245,196,81,.16)', color: C.gold, alpha: eo(p(t, 4.8, 5.1)) });
+    rise(ctx, 'Payments go through licensed providers.', 540, 1320, t, 5.3, { size: 36, weight: 500, fam: FI, color: C.mut, align: 'center', maxW: 900 });
+    rise(ctx, 'The seller is paid after the handover.', 540, 1380, t, 5.5, { size: 36, weight: 500, fam: FI, color: C.txt, align: 'center', maxW: 900 });
+    ctx.restore();
+  }
+
+  const c = span(t, 7.2, 11.8);
+  if (c > 0) {
+    ctx.save(); ctx.globalAlpha = c;
+    rise(ctx, '8-stage', 90, 400, t, 7.25, { size: 80, weight: 700, grad: true });
+    rise(ctx, 'secure handover', 90, 498, t, 7.35, { size: 80, weight: 700 });
+    const prog = p(t, 7.7, 7.7 + 7 * .42 + .2);
+    ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.beginPath(); ctx.roundRect(90, 560, 900, 12, 6); ctx.fill();
+    const pg = ctx.createLinearGradient(90, 0, 990, 0); pg.addColorStop(0, C.el); pg.addColorStop(1, C.cy);
+    ctx.fillStyle = pg; ctx.beginPath(); ctx.roundRect(90, 560, Math.max(12, 900 * prog), 12, 6); ctx.fill();
+    STAGES.forEach((s, i) => {
+      const ry = 620 + i * 128, ta = 7.45 + i * .06, a = eo(p(t, ta, ta + .35)), td = 7.7 + i * .42, d = p(t, td, td + .3);
+      if (a <= 0) return;
+      ctx.save(); ctx.globalAlpha *= a; ctx.translate((1 - a) * 50, 0);
+      ctx.fillStyle = d >= 1 ? 'rgba(52,211,153,.08)' : 'rgba(255,255,255,.04)'; ctx.beginPath(); ctx.roundRect(70, ry, 940, 108, 24); ctx.fill();
+      if (d > 0) { ctx.fillStyle = C.ok; ctx.beginPath(); ctx.arc(135, ry + 54, 32 * eo(Math.min(1, d * 1.6)), 0, 7); ctx.fill(); check(ctx, 135, ry + 54, 50, p(d, .3, 1), C.ink); }
+      else { ctx.strokeStyle = 'rgba(148,163,184,.4)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(135, ry + 54, 30, 0, 7); ctx.stroke(); T(ctx, String(i + 1), 135, ry + 56, { size: 28, weight: 600, align: 'center', base: 'middle', color: C.mut }); }
+      T(ctx, s, 195, ry + 56, { size: 36, weight: 600, fam: FI, base: 'middle', color: d >= 1 ? C.txt : C.mut, maxW: 780 });
+      ctx.restore();
+    });
+    T(ctx, 'Every step is logged for both sides.', 540, 1700, { size: 32, weight: 500, fam: FI, color: C.mut, align: 'center', alpha: p(t, 10.7, 11.1) });
+    ctx.restore();
+  }
+
+  endCard(ctx, t, 11.8, { lines: ['Buy with', 'confidence.'], sub: 'The seller is paid only after both sides confirm.', cta: 'Browse businesses' });
+}
+
+/* ---------- registry ---------- */
+const ADS = [
+  { id: 'auction', name: 'Going, going, sold', angle: 'Live auctions with proxy bidding and anti-sniping.', dur: 15, draw: drawAuction,
+    script: [['0:00', 'Hook: "Websites and SaaS businesses, sold live."'], ['0:03', 'Example listing appears. Bids arrive in real time.'], ['0:05', 'A proxy bid raises itself automatically.'], ['0:08', 'Last-second bid adds 2 minutes. No sniping.'], ['0:10', 'SOLD stamp and confetti.'], ['0:12', 'End card: "Buy. Sell. Auction."']],
+    caption: 'Real businesses. Real bids. Live. Auctions on VENTUREX extend when someone bids at the last second, so the best offer wins.' },
+  { id: 'seller', name: 'Your project has buyers', angle: 'For founders and indie makers thinking about selling.', dur: 15, draw: drawSeller,
+    script: [['0:00', 'Hook: "Built a side project? Someone wants to buy it."'], ['0:03', 'Six categories, including Starter Market for pre-revenue projects.'], ['0:06', 'Valuation form fills in with example numbers.'], ['0:08', 'Gauge sweeps to an estimated range.'], ['0:11', 'End card: "Your project has buyers."']],
+    caption: 'That SaaS, store or app you stopped working on is worth something to someone. Get a valuation and list it on VENTUREX.' },
+  { id: 'trust', name: 'Held, not sent', angle: 'Protected payments and the 8-stage handover, for cautious buyers.', dur: 15, draw: drawTrust,
+    script: [['0:00', 'Hook: "Buying a business online? Don\'t just wire money and hope."'], ['0:03', 'Payment moves from buyer into a protected hold. The seller waits.'], ['0:07', 'The 8-stage handover checks off step by step.'], ['0:12', 'End card: "Buy with confidence."']],
+    caption: 'On VENTUREX the seller gets paid only after domains, code and accounts are handed over and both sides confirm.' }
+];
+
+/* ---------- MP4 export (used by the local render script) ---------- */
+async function fontsReady() {
+  await Promise.all(['700 50px Sora', '600 50px Sora', '800 50px Sora', '500 50px Inter', '600 50px Inter', '500 50px "Noto Sans Georgian"'].map(f => document.fonts.load(f, 'Aა')));
+  await document.fonts.ready;
+}
+async function encodeAd(i, fps = 30, onProgress) {
+  await fontsReady();
+  const ad = ADS[i];
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const ctx = cv.getContext('2d');
+  const codec = 'avc1.640028', cfg = { codec, width: W, height: H, bitrate: 12_000_000, framerate: fps };
+  const sup = await VideoEncoder.isConfigSupported(cfg);
+  if (!sup.supported) throw new Error('H.264 encoding is not supported in this browser');
+  const muxer = new Mp4Muxer.Muxer({ target: new Mp4Muxer.ArrayBufferTarget(), video: { codec: 'avc', width: W, height: H, frameRate: fps }, fastStart: 'in-memory' });
+  let failure = null;
+  const enc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: e => { failure = e; } });
+  enc.configure(cfg);
+  const n = Math.round(ad.dur * fps);
+  for (let f = 0; f < n; f++) {
+    if (failure) throw failure;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ad.draw(ctx, f / fps);
+    const vf = new VideoFrame(cv, { timestamp: Math.round(f * 1e6 / fps), duration: Math.round(1e6 / fps) });
+    enc.encode(vf, { keyFrame: f % (fps * 2) === 0 }); vf.close();
+    while (enc.encodeQueueSize > 6) await new Promise(r => setTimeout(r, 5));
+    if (onProgress && f % 15 === 0) { onProgress(f / n); await new Promise(r => setTimeout(r, 0)); }
+  }
+  await enc.flush(); if (failure) throw failure;
+  muxer.finalize();
+  return new Uint8Array(muxer.target.buffer);
+}
+async function renderAd(i, fps = 30) {
+  const bytes = await encodeAd(i, fps);
+  let s = ''; for (let k = 0; k < bytes.length; k += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(k, k + 0x8000));
+  return btoa(s);
+}
+window.renderAd = renderAd;
+window.ADS = ADS;
+window.adState = state;
+
+/* ---------- preview players ---------- */
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const grid = document.getElementById('grid');
+const players = ADS.map((ad, i) => {
+  const el = document.createElement('article'); el.className = 'ad';
+  el.innerHTML = `<div><h2>${ad.name}</h2><p class="angle">${ad.angle}</p></div>
+    <div class="screen"><canvas width="540" height="960" aria-label="${ad.name} ad preview"></canvas></div>
+    <div class="controls"><button type="button" aria-label="Pause">❚❚</button><input id="scrub-${ad.id}" type="range" min="0" max="${ad.dur}" step="0.01" value="0" aria-label="Seek"><time>0.0s</time></div>
+    <div class="dl" hidden><button type="button">Download MP4</button><span></span></div>
+    <details><summary>Shot list and caption</summary><ol>${ad.script.map(([tc, s]) => `<li><span>${tc}</span>${s}</li>`).join('')}</ol><p class="caption"><b>Post caption:</b> ${ad.caption}</p></details>`;
+  grid.appendChild(el);
+  const cv = el.querySelector('canvas'), ctx = cv.getContext('2d');
+  const btn = el.querySelector('button'), range = el.querySelector('input'), time = el.querySelector('time');
+  const pl = { ad, ctx, t: reduce ? 12.8 : 0, playing: !reduce, btn, range, time };
+  const sync = () => { btn.textContent = pl.playing ? '❚❚' : '▶'; btn.setAttribute('aria-label', pl.playing ? 'Pause' : 'Play'); };
+  const toggle = () => { pl.playing = !pl.playing; sync(); };
+  btn.addEventListener('click', toggle); cv.addEventListener('click', toggle);
+  range.addEventListener('input', () => { pl.t = +range.value; paint(pl); });
+  sync();
+  const dl = el.querySelector('.dl'), dlBtn = dl.querySelector('button'), dlMsg = dl.querySelector('span');
+  dlBtn.addEventListener('click', () => download(i, dlBtn, dlMsg));
+  pl.dl = dl;
+  return pl;
+});
+function paint(pl) {
+  pl.ctx.setTransform(.5, 0, 0, .5, 0, 0);
+  pl.ad.draw(pl.ctx, pl.t);
+  pl.range.value = pl.t; pl.time.textContent = pl.t.toFixed(1) + 's';
+}
+document.getElementById('url').addEventListener('input', e => { state.url = e.target.value.trim(); players.forEach(paint); });
+let downloads = null;
+window.claude?.use?.('downloads').then(d => { downloads = d; if (d) players.forEach(pl => { pl.dl.hidden = false; }); }).catch(() => {});
+async function download(i, btn, msg) {
+  if (typeof VideoEncoder === 'undefined') { msg.textContent = "This browser can't build video files. Open the page in Chrome, Edge or Safari."; return; }
+  btn.disabled = true; msg.textContent = 'Building video… 0%';
+  try {
+    const bytes = await encodeAd(i, 30, f => { msg.textContent = `Building video… ${Math.round(f * 100)}%`; });
+    msg.textContent = 'Confirm the download';
+    await downloads.save({ filename: `venturex-${ADS[i].id}-1080x1920.mp4`, data: new Blob([bytes], { type: 'video/mp4' }) });
+    msg.textContent = 'Downloaded';
+  } catch (e) {
+    const code = e && e.code;
+    msg.textContent = code === 'declined' ? 'Download cancelled' : code === 'rate_limited' ? 'Another download is waiting for confirmation' : /not supported/.test(e?.message || '') ? "This browser can't build H.264 video. Try Chrome or Edge." : 'Download failed. Try again.';
+  } finally { btn.disabled = false; }
+}
+let last = performance.now();
+function loop(now) {
+  const dt = Math.min(.1, (now - last) / 1000); last = now;
+  players.forEach(pl => { if (pl.playing) { pl.t = (pl.t + dt) % pl.ad.dur; paint(pl); } });
+  requestAnimationFrame(loop);
+}
+document.fonts.ready.then(() => { players.forEach(paint); requestAnimationFrame(loop); });
+players.forEach(paint);
+</script>
